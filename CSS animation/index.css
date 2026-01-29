@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.box {
+  height: 150px;
+  width: 150px;
+  transition-duration: 5s;
+}
+
+.one {
+  background-color: aqua;
+  transition-property: background-color, transform;
+}
+
+.two {
+  background-color: lightcoral;
+    transition-property: background-color;
+}
+
+.three {
+  background-color: lightgreen;
+  
+}
+
+.one:hover {
+  transform: translate(1.5em, 1.5em);
+  background-color: brown;
+}
+
+.two:hover {
+  transform: rotateZ(90deg);
+  background-color: black;
+}
+
+.three:hover {
+  /* it will rotate in user's view */
+  transform: rotate(90deg);
+}
