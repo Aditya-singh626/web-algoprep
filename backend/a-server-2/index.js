@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const content = fs.readFileSync("posts.json", "utf-8");
 const jsonPosts = JSON.parse(content);
+// all handlers functions
 
 function getAllPostsHandler(req, res) {
   try {
