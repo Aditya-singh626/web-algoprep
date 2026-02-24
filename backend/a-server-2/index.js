@@ -63,6 +63,10 @@ app.get("/posts", getAllPostsHandler);
 app.get("/posts/:posteId", getbyId);
 app.patch("/posts/:posteId", update);
 app.delete("/posts/:posteId", deletepost);
+app.get("/posts/:posteId/comments", (req, res) => {
+  const id = req.params.posteId;
+  const post = jsonPosts.posts[id - 1];
+});
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
