@@ -1,22 +1,21 @@
 const express = require("express");
 const findObject = require("./function");
 const hasKeyValue = require("./function");
+const cookieParser = require("cookie-parser");
 // const cors = require("cors");
 const fs = require("fs");
 const { json } = require("stream/consumers");
 const { getCallSites } = require("util");
 
 const app = express();
-console.log("before");
-
 // app.use(cors({ origin: "http://127.0.0.1:5500" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 const content = fs.readFileSync("posts.json", "utf-8");
 const jsonPosts = JSON.parse(content);
-// all handlers functions
 
+
+// all handlers functions
 function getAllPostsHandler(req, res) {
   try {
     console.log("Recieved get Request");
@@ -46,7 +45,6 @@ function update(req, res) {
     res.status(200).json(post);
   }
 }
-
 function deletepost(req, res) {
   const id = req.params.posteId;
   const postarr = jsonPosts.posts;
@@ -58,6 +56,7 @@ function deletepost(req, res) {
   }
 }
 
+//routes
 // app.use(cors());
 app.get("/posts", getAllPostsHandler);
 app.get("/posts/:posteId", getbyId);
@@ -67,13 +66,9 @@ app.get("/posts/:posteId/comments", (req, res) => {
   const id = req.params.posteId;
   const post = jsonPosts.posts[id - 1];
 });
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
 
 // to connec to the database
-
 const mongoose = require("mongoose");
 
 const dotenv = require("dotenv");
@@ -81,10 +76,15 @@ dotenv.config();
 
 const dbLink = `mongodb+srv://admin:bxSyvQNqY9iclvIM@test.0skgdx3.mongodb.net/?appName=Test`;
 console.log(dbLink);
-
 mongoose
   .connect(dbLink)
   .then(function (connection) {
     console.log("connected to db");
   })
   .catch((err) => console.log(err));
+
+// server starting
+  const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
