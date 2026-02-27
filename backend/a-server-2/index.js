@@ -2,8 +2,10 @@ const express = require("express");
 const findObject = require("./function");
 const hasKeyValue = require("./function");
 const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
 // const cors = require("cors");
 const fs = require("fs");
+
 const { json } = require("stream/consumers");
 const { getCallSites } = require("util");
 
@@ -74,7 +76,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const dbLink = `mongodb+srv://admin:bxSyvQNqY9iclvIM@test.0skgdx3.mongodb.net/?appName=Test`;
+const dbLink = `mongodb+srv://${process.env.db_username}:${process.env.db_password}@test.0skgdx3.mongodb.net/?appName=Test`;
 console.log(dbLink);
 mongoose
   .connect(dbLink)
