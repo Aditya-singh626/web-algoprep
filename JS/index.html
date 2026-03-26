@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Counter(props) {
+        const  {index,value} = props;
+        const [count, setCount] = React.useState(value);
+
+        return (
+          <div>
+            <button onClick={() => setCount(count + 2)}> + </button>
+            <p>{count}</p>
+            <button onClick={() => setCount(count - 1)}> - </button>
+          </div>
+        );
+      }
+
+      // Capitalized component name
+      function ParentCounter() {
+        return (
+          <div>
+            <Counter index = {1} value={2}></Counter>
+            <Counter></Counter>
+            <Counter></Counter>
+          </div>
+        );
+      }
+
+      // React 18 way
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<ParentCounter />);
+    </script>
+  </body>
+</html>
