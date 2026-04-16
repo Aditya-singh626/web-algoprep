@@ -1,24 +1,21 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "api.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon cookies/api.js"
+    "dev": "nodemon db.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cookie-parser": "^1.4.7",
-    "dotenv": "^17.3.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.2.1"
+    "mongoose": "^9.4.1"
   },
   "devDependencies": {
-    "nodeman": "^1.1.2",
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.14"
   }
 }
